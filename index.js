@@ -1,6 +1,8 @@
 const { DOMParser, XMLSerializer } = require('xmldom');
 const path = require('path');
 const folderPath = path.join(__dirname, 'examples');
+const {Circle, Square, Triangle} = require('./shapes'); 
+
 
 // Function to check if a string is a valid color name
 function isValidColorName(colorName) {
@@ -65,33 +67,29 @@ if (answers.backgroundColorChoice === 'Hex Format') {
     // Define shape properties
     let shapeElement;
     let shapeClass;
-    switch (shape) {
-      case 'Circle':
-        shapeElement = dom.createElement('circle');
-        shapeElement.setAttribute('cx', '100');
-        shapeElement.setAttribute('cy', '100');
-        shapeElement.setAttribute('r', '50');
-        shapeClass = 'circle';
-        break;
-      case 'Square':
-        shapeElement = dom.createElement('rect');
-        shapeElement.setAttribute('x', '50');
-        shapeElement.setAttribute('y', '50');
-        shapeElement.setAttribute('width', '100');
-        shapeElement.setAttribute('height', '100');
-        shapeClass = 'square';
-        break;
-      case 'Triangle':
-        shapeElement = dom.createElement('path');
-        shapeElement.setAttribute('d', 'M100 50 L50 150 L150 150 Z');
-        shapeClass = 'triangle';
-          break;
-        default:
-            console.log('Invalid shape selected.');
-            return;
-    }
+
+      // Instantiate the shape class based on the selected shape
+  switch (shape) {
+    case 'Circle':
+      shapeElement = new Circle(50);
+      shapeClass = 'circle';
+      break;
+    case 'Square':
+      shapeElement = new Square(100);
+      shapeClass = 'square';
+      break;
+    case 'Triangle':
+      shapeElement = new Triangle();
+      shapeClass = 'triangle';
+      break;
+    default:
+      console.log('Invalid shape selected.');
+      return;
+  }
 
   // Set shape element attributes
+  const shapeMarkup = shapeElement.render(); // Render the shape
+  shapeElement = parser.parseFromString(shapeMarkup, 'application/xml').documentElement;
   shapeElement.setAttribute('class', shapeClass);
   shapeElement.setAttribute('fill', 'none');
   shapeElement.setAttribute('stroke-width', '3');
