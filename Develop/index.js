@@ -59,10 +59,6 @@ if (answers.backgroundColorChoice === 'Hex Format') {
 }
 
 
-    
- // Set background color
- svgElement.setAttribute('style', `background-color: ${answers.backgroundColor}`);
-
 
     // Define shape properties
     let shapeElement;
@@ -122,11 +118,17 @@ if (answers.backgroundColorChoice === 'Hex Format') {
   tspanElement.textContent = text;
   textElement.appendChild(tspanElement);
 
-// Append text element to SVG first
+
+shapeElement.setAttribute('fill', answers.backgroundColor);
+
+
+  // Append shape element to SVG after the text
+svgElement.appendChild(shapeElement);
+
+
+  // Append text element to SVG first
 svgElement.appendChild(textElement);
 
-// Append shape element to SVG after the text
-svgElement.appendChild(shapeElement);
 
 
   const svgMarkup = serializer.serializeToString(dom);
