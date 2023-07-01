@@ -22,7 +22,7 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 https://github.com/lilac27/Logo-Maker
 
 # Application video
-[AppVideo](<../../../Downloads/Untitled_ Jul 1, 2023 4_25 PM.webm>)
+https://drive.google.com/file/d/1xfyW2TX4R8eDqd3z0h5VwIaI82Ym12OQ/view
 
 # Example SVG
 ![ExampleSVG](image.png)
